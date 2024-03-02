@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style1.css' %}">
+    <title>To-Do List</title>
+</head>
+<body>
+    <div class="main">
+        <div class="tdhead">
+            <h1>TASK SHOW IN TABLE</h1>
+        </div>
+            
+        <div class="thbody">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>TASK</th>
+                        <th>Task Completed</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for x in tasks %}
+                <tr>
+                    <td>{{x.id}}</td>
+                    <td>{{x.task}}</td>
+                    <td {% if task.completed %} class="completed" {% endif %}>
+                    <a href="{% url 'complete_task' x.id %}">Completed</a>    
+                    </td>  
+                </tr> 
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<!-- {% if task.completed %} class="completed" {% endif %} -->

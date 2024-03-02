@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>To Do List</title>
+</head>
+<body>
+    <div class="main">
+        <div>
+            <h1>TO DO LIST</h1>
+        </div>
+        <div class="msg">
+            <h5>
+                {% for message in messages %}
+                     {{message}}
+                {% endfor %}
+            </h5>
+        </div>
+        <div>
+            <form action="" method="POST">
+                {% csrf_token %}
+                
+                <input id="task" type="text" name="task" placeholder="ADD YOUR TO DO TASK" required><br>
+                <button type="submit">Add Task</button>
+            </form>
+        </div>
+        <!-- <div >
+            {% for y in ak %}
+            <ul>
+                
+                <li>
+                    {{y.id}}
+                    {{y.task}}
+                   <a href="">Complete</a>
+                </li>
+                
+            </ul>
+            {% endfor %}
+        </div> -->
+    </div>
+</body>
+</html>
